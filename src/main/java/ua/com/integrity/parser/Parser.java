@@ -5,20 +5,20 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.web.multipart.MultipartFile;
 import ua.com.integrity.dto.ExcelData;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Parser {
 
-    public static List<ExcelData> parse (String fileLocation) {
+    public static List<ExcelData> parse (MultipartFile multipartFile) {
         List<ExcelData> excelData = new ArrayList<>();
 
-        try(FileInputStream file = new FileInputStream(new File(fileLocation))) {
+        try(InputStream file = multipartFile.getInputStream()) {
             Workbook workbook = new XSSFWorkbook(file);
             Sheet sheet = workbook.getSheetAt(0);
             sheet.removeRow(sheet.getRow(0));
