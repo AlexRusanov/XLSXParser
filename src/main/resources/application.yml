@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://nevada.integrity.com.ua:5432/audit
+    password: PeQnubWRZHSZY8g
+    driver-class-name: org.postgresql.Driver
+    username: audit
