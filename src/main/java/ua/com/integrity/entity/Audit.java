@@ -41,4 +41,8 @@ public class Audit {
 
     @Column(name = "owner")
     private String owner;
+
+    public Audit () {
+        this.number = "";
+    }
 }

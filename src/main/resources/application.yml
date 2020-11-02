@@ -1,3 +1,6 @@
+server:
+  port: 9000
+
 spring:
   datasource:
     url: jdbc:postgresql://nevada.integrity.com.ua:5432/audit

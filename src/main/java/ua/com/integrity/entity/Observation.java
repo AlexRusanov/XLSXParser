@@ -1,10 +1,12 @@
 package ua.com.integrity.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "observations")
 public class Observation {
