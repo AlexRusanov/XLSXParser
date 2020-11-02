@@ -3,6 +3,7 @@ package ua.com.integrity.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,7 +35,12 @@ public class parserController {
     @Autowired
     private DefectService defectService;
 
-    @PostMapping(value = "/")
+    @GetMapping("/api")
+    public void getParseForm() {
+
+    }
+
+    @PostMapping(value = "/api")
     public ResponseEntity<List<ParsedFiles>> parse(@RequestParam("file") MultipartFile[] files) {
         List<ParsedFiles> parsedFiles = new ArrayList<>();
 
