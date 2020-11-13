@@ -23,8 +23,8 @@ public class ExcelData {
     private Integer deviationCount;
     private Double actualLoss;
     private Double potentialLoss;
-    private Integer likelyhood;
-    private Integer financialLoss;
+    private String likelyhood;
+    private String financialLoss;
     private String reputational;
     private String regulatory;
     private String businessProcess;

@@ -104,7 +104,13 @@ public class Defect {
     @Column(name = "significance")
     private String significance;
 
-    public Defect(Observation observation, String bpCode, String observationDescription, String rootCause, String riskType, String riskCategory, String riskLevel, String recommendations, String inspector, String observationRepetitionFeature, Integer lastObservationYear, Integer generalCount, Integer sampleNumber, Integer deviationCount, Double actualLoss, Double potentialLoss, String reputational, String regulatory, String businessProcess, String severity) {
+    @Column(name = "likelyhood")
+    private String likelyhood;
+
+    @Column(name = "finantial_loss")
+    private String finantial_loss;
+
+    public Defect(Observation observation, String bpCode, String observationDescription, String rootCause, String riskType, String riskCategory, String riskLevel, String recommendations, String inspector, String observationRepetitionFeature, Integer lastObservationYear, Integer generalCount, Integer sampleNumber, Integer deviationCount, Double actualLoss, Double potentialLoss, String reputational, String regulatory, String businessProcess, String severity, String significance, String likelyhood, String finantialLoss) {
         this.observation = observation;
         this.dp_kod = bpCode;
         this.description = observationDescription;
@@ -128,5 +134,8 @@ public class Defect {
         this.risk_set = false;
         this.pmo_set = false;
         this.task_set = false;
+        this.significance = significance;
+        this.likelyhood = likelyhood;
+        this.finantial_loss = finantialLoss;
     }
 }

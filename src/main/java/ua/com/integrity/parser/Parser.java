@@ -90,10 +90,10 @@ public class Parser {
                             data.setPotentialLoss(cell.getNumericCellValue());
                             break;
                         case 26:
-                            data.setLikelyhood((int) cell.getNumericCellValue());
+                            data.setLikelyhood(String.valueOf((int) cell.getNumericCellValue()));
                             break;
                         case 27:
-                            data.setFinancialLoss((int) cell.getNumericCellValue());
+                            data.setFinancialLoss(String.valueOf((int) cell.getNumericCellValue()));
                             break;
                         case 28:
                             data.setReputational(String.valueOf((int) cell.getNumericCellValue()));

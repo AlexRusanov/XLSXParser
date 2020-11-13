@@ -1,8 +1,8 @@
 package ua.com.integrity.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +19,6 @@ import ua.com.integrity.service.DefectService;
 import ua.com.integrity.service.ObservationService;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,7 +40,7 @@ public class parserController {
     }
 
     @PostMapping(value = "/api")
-    public ResponseEntity<List<ParsedFiles>> parse(@RequestParam("file") MultipartFile[] files) {
+    public ResponseEntity<List<ParsedFiles>> parse(@RequestParam("file") @NonNull MultipartFile[] files) {
         List<ParsedFiles> parsedFiles = new ArrayList<>();
 
         for (MultipartFile file : files) {
@@ -81,7 +80,7 @@ public class parserController {
         Observation observation = observationService.create(new Observation(audit, currObservation.getObservationArea(), currObservation.getObservation()));
 
         List<Defect> defectsForCurrObservation = currObservationRows.stream()
-                .map(el -> new Defect(observation, el.getBpCode(), el.getObservationDescription(), el.getRootCause(), el.getRiskType(), el.getRiskCategory(), el.getRiskLevel(), el.getRecommendations(), el.getInspector(), el.getObservationRepetitionFeature(), el.getLastObservationYear(), el.getGeneralCount(), el.getSampleNumber(), el.getDeviationCount(), el.getActualLoss(), el.getPotentialLoss(), el.getReputational(), el.getRegulatory(), el.getBusinessProcess(), el.getSeverity()))
+                .map(el -> new Defect(observation, el.getBpCode(), el.getObservationDescription(), el.getRootCause(), el.getRiskType(), el.getRiskCategory(), el.getRiskLevel(), el.getRecommendations(), el.getInspector(), el.getObservationRepetitionFeature(), el.getLastObservationYear(), el.getGeneralCount(), el.getSampleNumber(), el.getDeviationCount(), el.getActualLoss(), el.getPotentialLoss(), el.getReputational(), el.getRegulatory(), el.getBusinessProcess(), el.getSeverity(), el.getSignificance(), el.getLikelyhood(), el.getFinancialLoss()))
                 .collect(Collectors.toList());
         defectService.createAllForObservation(defectsForCurrObservation);
     }
