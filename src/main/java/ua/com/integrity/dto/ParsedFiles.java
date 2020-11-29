@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class ParsedFiles {
-    int auditId;
+    long auditId;
     String fileName;
 }

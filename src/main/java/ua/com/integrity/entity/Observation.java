@@ -8,22 +8,23 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "observations")
+@Table(name = "OBSERVATIONS")
 public class Observation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    @SequenceGenerator(name = "observationsId", sequenceName = "OBSERVATIONS_ID", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "observationsId")
+    @Column(name = "ID")
+    private long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "audit_id")
+    @JoinColumn(name = "AUDIT_ID")
     private Audit audit;
 
-    @Column(name = "observation_area")
+    @Column(name = "OBSERVATION_AREA")
     private String observation_area;
 
-    @Column(name = "content")
+    @Column(name = "CONTENT")
     private String content;
 
     public Observation(Audit audit, String observationArea, String content) {

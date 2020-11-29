@@ -8,106 +8,107 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "defects")
+@Table(name = "DEFECTS")
 public class Defect {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    @SequenceGenerator(name = "defectsId", sequenceName = "DEFECTS_ID", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "defectsId")
+    @Column(name = "ID")
+    private long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "observation_id")
+    @JoinColumn(name = "OBSERVATION_ID")
     private Observation observation;
 
-    @Column(name = "dp_kod")
+    @Column(name = "DP_KOD")
     private String dp_kod;
 
-    @Column(name = "description")
+    @Column(name = "DESCRIPTION")
     private String description;
 
-    @Column(name = "root_cause")
+    @Column(name = "ROOT_CAUSE")
     private String root_cause;
 
-    @Column(name = "risk_type_dad")
+    @Column(name = "RISK_TYPE_DAD")
     private String risk_type_dad;
 
-    @Column(name = "risk_category_dad")
+    @Column(name = "RISK_CATEGORY_DAD")
     private String risk_category_dad;
 
-    @Column(name = "risk_level_dad")
+    @Column(name = "RISK_LEVEL_DAD")
     private String risk_level_dad;
 
-    @Column(name = "risk_type_rid")
+    @Column(name = "RISK_TYPE_RID")
     private String risk_type_rid;
 
-    @Column(name = "risk_category_rid")
+    @Column(name = "RISK_CATEGORY_RID")
     private String risk_category_rid;
 
-    @Column(name = "risk_level_rid")
+    @Column(name = "RISK_LEVEL_RID")
     private String risk_level_rid;
 
-    @Column(name = "recommendation_dad")
+    @Column(name = "RECOMMENDATION_DAD")
     private String recommendation_dad;
 
-    @Column(name = "inspector")
+    @Column(name = "INSPECTOR")
     private String inspector;
 
-    @Column(name = "repetition_feature")
+    @Column(name = "REPETITION_FEATURE")
     private String repetition_feature;
 
-    @Column(name = "defect_year")
+    @Column(name = "DEFECT_YEAR")
     private Integer defect_year;
 
-    @Column(name = "general_count")
+    @Column(name = "GENERAL_COUNT")
     private Integer general_count;
 
-    @Column(name = "sample_number")
+    @Column(name = "SAMPLE_NUMBER")
     private Integer sample_number;
 
-    @Column(name = "defect_count")
+    @Column(name = "DEFECT_COUNT")
     private Integer defect_count;
 
-    @Column(name = "actual_loss")
+    @Column(name = "ACTUAL_LOSS")
     private Double actual_loss;
 
-    @Column(name = "potential_loss")
+    @Column(name = "POTENTIAL_LOSS")
     private Double potential_loss;
 
-    @Column(name = "reputational")
+    @Column(name = "REPUTATIONAL")
     private String reputational;
 
-    @Column(name = "regulatory")
+    @Column(name = "REGULATORY")
     private String regulatory;
 
-    @Column(name = "business_process")
+    @Column(name = "BUSINESS_PROCESS")
     private String business_process;
 
-    @Column(name = "severity")
+    @Column(name = "SEVERITY")
     private String severity;
 
-    @Column(name = "risk_set")
-    private Boolean risk_set;
+    @Column(name = "RISK_SET")
+    private Integer risk_set;
 
-    @Column(name = "pmo_response_measure")
+    @Column(name = "PMO_RESPONSE_MEASURE")
     private String pmo_response_measure;
 
-    @Column(name = "pmo_comment")
+    @Column(name = "PMO_COMMENT")
     private String pmo_comment;
 
-    @Column(name = "pmo_set")
-    private Boolean pmo_set;
+    @Column(name = "PMO_SET")
+    private Integer pmo_set;
 
-    @Column(name = "task_set")
-    private Boolean task_set;
+    @Column(name = "TASK_SET")
+    private Integer task_set;
 
-    @Column(name = "significance")
+    @Column(name = "SIGNIFICANCE")
     private String significance;
 
-    @Column(name = "likelyhood")
+    @Column(name = "LIKELYHOOD")
     private String likelyhood;
 
-    @Column(name = "finantial_loss")
+    @Column(name = "FINANTIAL_LOSS")
     private String finantial_loss;
 
     public Defect(Observation observation, String bpCode, String observationDescription, String rootCause, String riskType, String riskCategory, String riskLevel, String recommendations, String inspector, String observationRepetitionFeature, Integer lastObservationYear, Integer generalCount, Integer sampleNumber, Integer deviationCount, Double actualLoss, Double potentialLoss, String reputational, String regulatory, String businessProcess, String severity, String significance, String likelyhood, String finantialLoss) {
@@ -131,9 +132,9 @@ public class Defect {
         this.regulatory = regulatory;
         this.business_process = businessProcess;
         this.severity = severity;
-        this.risk_set = false;
-        this.pmo_set = false;
-        this.task_set = false;
+        this.risk_set = 0;
+        this.pmo_set = 0;
+        this.task_set = 0;
         this.significance = significance;
         this.likelyhood = likelyhood;
         this.finantial_loss = finantialLoss;
