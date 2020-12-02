@@ -87,8 +87,8 @@ public class Defect {
     @Column(name = "SEVERITY")
     private String severity;
 
-    @Column(name = "RISK_SET")
-    private Integer risk_set;
+    @Column(name = "RISK_SET_BOOL_STR")
+    private String risk_set;
 
     @Column(name = "PMO_RESPONSE_MEASURE")
     private String pmo_response_measure;
@@ -96,11 +96,11 @@ public class Defect {
     @Column(name = "PMO_COMMENT")
     private String pmo_comment;
 
-    @Column(name = "PMO_SET")
-    private Integer pmo_set;
+    @Column(name = "PMO_SET_BOOL_STR")
+    private String pmo_set;
 
-    @Column(name = "TASK_SET")
-    private Integer task_set;
+    @Column(name = "TASK_SET_BOOL_STR")
+    private String task_set;
 
     @Column(name = "SIGNIFICANCE")
     private String significance;
@@ -132,9 +132,9 @@ public class Defect {
         this.regulatory = regulatory;
         this.business_process = businessProcess;
         this.severity = severity;
-        this.risk_set = 0;
-        this.pmo_set = 0;
-        this.task_set = 0;
+        this.risk_set = "false";
+        this.pmo_set = "false";
+        this.task_set = "false";
         this.significance = significance;
         this.likelyhood = likelyhood;
         this.finantial_loss = finantialLoss;
